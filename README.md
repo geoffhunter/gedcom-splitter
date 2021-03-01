@@ -9,13 +9,13 @@ This utility allows the user to extract a branch of a family tree, from a GEDCOM
 
 It allows the user to specify a family in params. It then processes the GEDCOM file, tagging all ancestors of the specified family, and all relatives of these ancestors. 
 
-It then produces a ‘New.ged’ file containing all the details from the source GEDCOM file, but only for the tagged individuals and families.
+It then produces a ‘new.ged’ file containing all the details from the source GEDCOM file, but only for the tagged individuals and families.
 
 The process of creating the new GED file is separated from the process of tagging, to allow manual tagging to be done, for example to un-tag individuals that are still living, and their families, to protect their privacy if required.
 
 Modules
 
-FamilyTreeSplitter.pyw
+getcom-splitter.pyw
 
 The main module. This module presents the user with a Windows user interface, allowing them to edit parameters, process a GEDCOM format file or create the new GEDCOM file.
 
