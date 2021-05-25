@@ -1,6 +1,4 @@
-import params as params
-import individuals as ind
-import families as fam
+import ged_lib as gl
 
 class working_class(object):
     def __init__(self, tag=None, id_type=None, id=None, text=None):
@@ -15,15 +13,15 @@ column_heading = ["Tag", "ID Type", "ID", "Text"]
 
 def write_ged_file():
 #    print('Writing New GED File')
-    ind.read_individuals()
-    fam.read_families()
+    gl.read_individuals()
+    gl.read_families()
     load_working()
     tag_working()
     write_working()
     write_new_ged_file()
     
 def write_new_ged_file():   
-    file = open('New.ged','w')
+    file = open('new.ged','w')
     for i in range(0,len(working)):
         if working[i].tag == 'Y':
             file.write(working[i].text + '\n')
@@ -69,10 +67,10 @@ def write_working():
 
 def load_working():
 #    print("Loading Working GED File")
-    params.get_params()
+    gl.get_params()
     
     working.clear()
-    gfile = open(params.ged_file_name, "r")
+    gfile = open(gl.ged_file_name, "r")
 
     tag = ""
     while True:
@@ -106,10 +104,10 @@ def tag_working():
             working[i].tag = 'Y'
         if working[i].id_type == "I":
             id = working[i].id
-            working[i].tag = ind.individuals[id].tag
+            working[i].tag = gl.individuals[id].tag
         if working[i].id_type == "F":
             id = working[i].id
-            working[i].tag = fam.families[id].tag
+            working[i].tag = gl.families[id].tag
                 
 write_ged_file()
 
