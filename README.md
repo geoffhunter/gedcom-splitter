@@ -1,9 +1,8 @@
 # gedcom-splitter
-Note: this utility needs the ged_lib.py and params.txt files in the gedcom-file-processor repository to function
 
-A utility to split a GEDCOM format file.
+*A utility to split a GEDCOM format file.*
 
-Overview
+## Overview
 
 This utility allows the user to extract a branch of a family tree, from a GEDCOM format file, and create a new GEDCOM file. 
 
@@ -13,22 +12,30 @@ It then produces a ‘new.ged’ file containing all the details from the source
 
 The process of creating the new GED file is separated from the process of tagging, to allow manual tagging to be done, for example to un-tag individuals that are still living, and their families, to protect their privacy if required.
 
-Modules
+## Prerequisites
 
-getcom-splitter.pyw
+* This utility needs the **ged_lib.py** and **params.txt** files in the [**gedcom-file-processor**](https://github.com/geoffhunter/gedcom-file-processor) repository to function:
+
+> `mklink ged_lib.py ..\gedcom-file-processor\ged_lib.py`
+
+> `mklink params.txt ..\gedcom-file-processor\params.txt`
+
+## Modules
+
+### getcom-splitter.pyw
 
 The main module. This module presents the user with a Windows user interface, allowing them to edit parameters, process a GEDCOM format file or create the new GEDCOM file.
 
 Parameters are:
 
-GED File	The name of the GEDCOM format file to be processed. The file should be in the location where the utility runs.
-Initial Family	The family uses as the basis for the new GEDCOM file. To obtain this, first process a GEDCOM format file. This will produce Individuals.txt, Families.txt and Children.txt containing lists of individuals, families and children in the GEDCOM file. Then, in Individuals.txt, find the IDs of the husband and wife for the family, then, in Families.txt, find the ID of the family.
+* GED File:	The name of the GEDCOM format file to be processed. The file should be in the location where the utility runs.
+* Initial Family:	The family uses as the basis for the new GEDCOM file. To obtain this, first process a GEDCOM format file. This will produce Individuals.txt, Families.txt and Children.txt containing lists of individuals, families and children in the GEDCOM file. Then, in Individuals.txt, find the IDs of the husband and wife for the family, then, in Families.txt, find the ID of the family.
 
-ged_lib.py
+### ged_lib.py
 
-See the GEDCOMFileProcessor utility for information on this module.
+See the [**gedcom-file-processor**](https://github.com/geoffhunter/gedcom-file-processor) utility for information on this module.
 
-tag_records.py
+### tag_records.py
 
 This module contains the tag_ancestors_families subroutine that tags individuals and families in  Individuals.txt, Families.txt, where they are ancestors of the initial family.
 
@@ -48,7 +55,7 @@ tag_family tags the husband, wife and children in the family (id passed as a par
 
 tag_additional_families scans the ‘individuals’ list and, for each tagged individual, it searches the ‘families’ list for a family where the individual was a husband or wife. If found, it tags that family, then calls tag_family to tag all the individuals in the family. It then returns the number of individuals newly tagged.
 
-write_ged_file.py
+### write_ged_file.py
 
 This module writes the new GEDCOM file with the tagged individuals and families.
 
