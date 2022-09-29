@@ -10,7 +10,7 @@ def tag_ancestors_families():
     family_id = int(gl.initial_family)
     tree_walk(family_id)
 
-    for i in range(0,len(gl.families)):
+    for i in gl.families:
         if gl.families[i].tag == 'Y':
             tag_family(gl.families[i].family_id, 0)
 
@@ -49,7 +49,7 @@ def tag_family(family_id, tag_count):
             gl.individuals[wife_id].tag = 'Y'
             tag_count = tag_count + 1
         
-    for i in range(1,len(gl.children)):
+    for i in gl.children:
         child_family_id = gl.children[i].family_id
         if child_family_id != 0:
             if child_family_id > family_id: break
@@ -62,10 +62,10 @@ def tag_family(family_id, tag_count):
 
 def tag_additional_families():
     tag_count = 0
-    for i in range(0,len(gl.individuals)):
+    for i in gl.individuals:
         if gl.individuals[i].tag == 'Y':
             id = gl.individuals[i].individual_id
-            for f in range(0,len(gl.families)):
+            for f in gl.families:
                 if gl.families[f].husband_id == id or gl.families[f].wife_id == id:
                     family_id = gl.families[f].family_id
                     gl.families[family_id].tag = 'Y'   

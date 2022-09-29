@@ -109,5 +109,5 @@ def tag_working():
             id = working[i].id
             working[i].tag = gl.families[id].tag
                 
-write_ged_file()
+#write_ged_file()
 
