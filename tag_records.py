@@ -52,7 +52,8 @@ def tag_family(family_id, tag_count):
     for i in gl.children:
         child_family_id = gl.children[i].family_id
         if child_family_id != 0:
-            if child_family_id > family_id: break
+            # removes additional children, we dont want that
+            # if child_family_id > family_id: break
             if family_id == child_family_id:
                 child_id = gl.children[i].child_id
                 if gl.individuals[child_id].tag == "N":
