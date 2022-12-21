@@ -53,5 +53,4 @@ if want_ui:
 else:
     gl.process_ged_file()
     tag.tag_ancestors_families()
-    tag.tag_individuals_families()
     wgf.write_ged_file()
